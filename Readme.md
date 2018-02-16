@@ -53,3 +53,10 @@ The idea here is to pack the file as zip containing the hostname.
 zip -r $(date -Im)-$(hostname)-to-verify.zip /tmp/infected
 ```
 
+## Virustotal hooking
+
+```
+export VT_API_KEY=6f680a95b....
+./process.sh /tmp/infected/test-pdb2.exe
+```
+
