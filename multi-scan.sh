@@ -19,5 +19,8 @@ if [ $? -ne 0 ]; then
     zip -r $(date -Im)-$(hostname)-to-verify.zip ${INFECTED_DIR}
     for file in $(ls ${INFECTED_DIR}); do
         ./vt-process.sh ${INFECTED_DIR}/${file}
+        # VT it is limited to at most 4 requests of any nature in any given 1 minute time frame.
+        #60/4*2=30 (at maximum we do 1 request for the checksum and another if nothing was found)
+        sleep 30
     done
 fi
